@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Часть Б — CSS: Фоны, текст, шрифты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>LAB 9 / Part B</h1>
+    <nav>
+      <a href="../partA/index.html">← Часть А</a>
+      <a href="#bg-color">Фон</a>
+      <a href="#text-color">Текст</a>
+      <a href="#fonts">Шрифты</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <div class="hero" id="top">
+    <p class="label">Лабораторное занятие 9 · Часть Б</p>
+    <h1 class="hero-title">CSS<br/><span>Стили &amp; оформление</span></h1>
+    <p class="hero-desc">
+      Самостоятельная работа: управление фоновыми изображениями, цветом текста,
+      отступами, выравниванием и шрифтами с помощью CSS.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       БЛОК 1 — Цвет фона
+  ═══════════════════════════════════════ -->
+  <section id="bg-color">
+    <div class="section-label">// CSS: background-color</div>
+    <h2 class="section-title"><span class="num">01</span>Цвет фона</h2>
+
+    <div class="card-grid">
+      <div class="card" style="background-color:#1a1a2e;">
+        <code>background-color: #1a1a2e</code>
+        <p>Тёмно-синий фон для тела страницы</p>
+      </div>
+      <div class="card" style="background-color:#f7c948; color:#000;">
+        <code style="color:#000;">background-color: #f7c948</code>
+        <p style="color:#333;">Жёлтый фон для h1</p>
+      </div>
+      <div class="card" style="background-color:#2d6a4f;">
+        <code>background-color: #2d6a4f</code>
+        <p>Зелёный фон для p</p>
+      </div>
+      <div class="card" style="background-color:#fa05ff; color:#fff;">
+        <code>background-color: #fa05ff</code>
+        <p>Розовый фон для h2</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       БЛОК 2 — Фоновое изображение
+  ═══════════════════════════════════════ -->
+  <section id="bg-image">
+    <div class="section-label">// CSS: background-image</div>
+    <h2 class="section-title"><span class="num">02–04</span>Фоновые изображения</h2>
+
+    <div class="bg-demos">
+      <!-- No-scroll -->
+      <div class="bg-demo bg-fixed">
+        <div class="bg-demo-label">
+          <code>background-attachment: fixed</code>
+          <p>Задание 1: фон не движется при прокрутке</p>
+        </div>
+      </div>
+
+      <!-- Repeat X -->
+      <div class="bg-demo bg-repeat-x">
+        <div class="bg-demo-label">
+          <code>background-repeat: repeat-x</code>
+          <p>Задание 2: фон повторяется по горизонтали</p>
+        </div>
+      </div>
+
+      <!-- Repeat Y -->
+      <div class="bg-demo bg-repeat-y">
+        <div class="bg-demo-label">
+          <code>background-repeat: repeat-y</code>
+          <p>Задание 3: фон повторяется по вертикали</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       БЛОК 3 — Цвет и оформление текста
+  ═══════════════════════════════════════ -->
+  <section id="text-color">
+    <div class="section-label">// CSS: color, text-decoration, text-align, text-indent, direction</div>
+    <h2 class="section-title"><span class="num">04–06</span>Цвет и оформление текста</h2>
+
+    <!-- Задание 4: text-decoration -->
+    <div class="demo-block">
+      <p class="demo-label">background-color текста + text-decoration</p>
+      <p class="text-underline">Задание 4: Подчёркнутый текст <code>text-decoration: underline</code></p>
+      <p class="text-overline">text-decoration: overline</p>
+      <p class="text-linethrough">text-decoration: line-through</p>
+      <p class="text-bg-highlight">Цвет фона текста: <mark>background-color: #fff59d</mark></p>
+    </div>
+
+    <!-- Задание 5: direction -->
+    <div class="demo-block">
+      <p class="demo-label">direction (направление текста)</p>
+      <p class="text-ltr"><strong>LTR:</strong> Слева направо — стандартное направление</p>
+      <p class="text-rtl"><strong>RTL:</strong> Справа налево — арабский/иврит стиль</p>
+    </div>
+
+    <!-- Задание 6: color -->
+    <div class="demo-block">
+      <p class="demo-label">color (цвет текста)</p>
+      <p class="color-gray">h1 — Цвет #777777 (серый)</p>
+      <p class="color-blue">h2 — Цвет #5f80a9 (синий)</p>
+      <p class="color-green">p — Цвет #2d653e, жирный (зелёный)</p>
+      <p class="color-navy">p.message — Цвет #232352 (тёмно-синий)</p>
+    </div>
+
+    <!-- text-indent + text-align -->
+    <div class="demo-block">
+      <p class="demo-label">text-indent &amp; text-align</p>
+      <p class="text-indent-demo">Этот абзац имеет отступ 30px. Отступы помогают делать страницы более организованными и удобочитаемыми.</p>
+      <p class="text-left">← Выравнивание по левому краю (text-align: left)</p>
+      <h3 class="text-right">Выравнивание по правому краю (text-align: right) →</h3>
+      <h3 class="text-center">Выравнивание по центру (text-align: center)</h3>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       БЛОК 4 — Шрифты
+  ═══════════════════════════════════════ -->
+  <section id="fonts">
+    <div class="section-label">// CSS: font-family, font-size, font-style</div>
+    <h2 class="section-title"><span class="num">07</span>Шрифты</h2>
+
+    <div class="font-showcase">
+      <div class="font-card">
+        <div class="font-demo font-georgia">Georgia</div>
+        <code>font-family: Georgia</code>
+        <p>Классический сериф</p>
+      </div>
+      <div class="font-card">
+        <div class="font-demo font-courier">Courier New</div>
+        <code>font-family: Courier New</code>
+        <p>Моноширинный шрифт</p>
+      </div>
+      <div class="font-card">
+        <div class="font-demo font-tahoma">Tahoma</div>
+        <code>font-family: Tahoma</code>
+        <p>Безсерифный шрифт</p>
+      </div>
+      <div class="font-card">
+        <div class="font-demo font-playfair">Playfair</div>
+        <code>font-family: Playfair Display</code>
+        <p>Элегантный дисплейный</p>
+      </div>
+    </div>
+
+    <!-- Font sizes -->
+    <div class="demo-block" style="margin-top:28px;">
+      <p class="demo-label">font-size (три способа задать размер)</p>
+      <p class="fs-percent">140% — размер в процентах</p>
+      <p class="fs-px">20px — размер в пикселях</p>
+      <p class="fs-em">2em — размер в em-единицах</p>
+    </div>
+
+    <!-- Font style -->
+    <div class="demo-block">
+      <p class="demo-label">font-style (стиль шрифта)</p>
+      <p class="fs-normal">Задание 7: font-style: normal</p>
+      <p class="fs-italic">Задание 7: font-style: italic — курсив</p>
+      <p class="fs-oblique">Задание 7: font-style: oblique — наклонный</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2024 Лабораторная работа 9 · Часть Б — CSS
+  </footer>
+
+</body>
+</html>

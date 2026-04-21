@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Часть А — HTML: Ссылки и якоря</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e0f;
+      --surface: #18181b;
+      --border: #2a2a2e;
+      --accent: #f7c948;
+      --accent2: #ff6b6b;
+      --text: #e8e8e8;
+      --muted: #888;
+      --radius: 8px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(14,14,15,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      color: var(--accent);
+      letter-spacing: .05em;
+    }
+
+    header nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: .85rem;
+      transition: color .2s;
+    }
+    header nav a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    #top {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 30%, rgba(247,201,72,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 90% 70%, rgba(255,107,107,.07) 0%, transparent 60%);
+    }
+
+    .label {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span { color: var(--accent); }
+
+    .hero-desc {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 40px;
+    }
+
+    /* ── SECTION ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section h2 .num {
+      font-family: 'Space Mono', monospace;
+      color: var(--accent2);
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+
+    /* ── EXERCISE BLOCKS ── */
+    .exercise {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      transition: border-color .2s;
+    }
+    .exercise:hover { border-color: #3f3f46; }
+
+    .exercise p.task {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ── SEARCH ENGINES GRID ── */
+    .search-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .search-grid a {
+      display: inline-block;
+      padding: 8px 20px;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .search-grid a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+
+    /* ── NEW-WINDOW LINKS ── */
+    .site-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .site-list li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: color .2s;
+    }
+    .site-list li a::before {
+      content: '↗';
+      font-family: 'Space Mono', monospace;
+      color: var(--accent2);
+      font-size: .8rem;
+    }
+    .site-list li a:hover { color: var(--accent); }
+
+    /* ── LONG PAGE DEMO ── */
+    .long-page-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .lp-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .lp-body { padding: 24px; }
+    .lp-spacer {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: .8rem;
+      font-family: 'Space Mono', monospace;
+    }
+    .lp-footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* ── ANCHOR LINK STYLE ── */
+    .anchor-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: .88rem;
+      transition: background .2s, color .2s;
+    }
+    .anchor-link:hover { background: var(--accent); color: #000; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+      font-size: .8rem;
+      font-family: 'Space Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <h1>LAB 9 / Part A</h1>
+    <nav>
+      <a href="#ex1">Поисковики</a>
+      <a href="#ex2">Новое окно</a>
+      <a href="#ex3">Якоря</a>
+      <a href="../partB/index.html">Часть Б →</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO / TOP ANCHOR ── -->
+  <section id="top" style="padding-top:120px;">
+    <p class="label">Лабораторное занятие 9 · Часть А</p>
+    <h1 class="hero-title">HTML<br/><span>Ссылки &amp; якоря</span></h1>
+    <p class="hero-desc">
+      Самостоятельная работа: создание ссылок на поисковые системы,
+      открытие страниц в новом окне и навигация по якорям внутри страницы.
+    </p>
+    <a href="#ex1" class="anchor-link">▼ Начать</a>
+  </section>
+
+  <!-- ── EXERCISE 1 ── -->
+  <section id="ex1">
+    <h2><span class="num">01</span>Ссылки на поисковые системы</h2>
+    <div class="exercise">
+      <p class="task">// Задание: создайте несколько ссылок на различные поисковые системы</p>
+      <div class="search-grid">
+        <a href="https://www.google.com" target="_blank">Google</a>
+        <a href="https://www.yahoo.com" target="_blank">Yahoo</a>
+        <a href="https://www.bing.com" target="_blank">Bing</a>
+        <a href="https://www.duckduckgo.com" target="_blank">DuckDuckGo</a>
+        <a href="https://www.yandex.ru" target="_blank">Yandex</a>
+        <a href="https://www.ask.com" target="_blank">Ask.com</a>
+        <a href="https://www.baidu.com" target="_blank">Baidu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXERCISE 2 ── -->
+  <section id="ex2">
+    <h2><span class="num">02</span>Ссылки, открывающиеся в новом окне</h2>
+    <div class="exercise">
+      <p class="task">// Задание: создайте ссылки на 5 разных сайтов, открывающихся в новом окне (target="_blank")</p>
+      <ul class="site-list">
+        <li><a href="https://developer.mozilla.org" target="_blank" rel="noopener">developer.mozilla.org — MDN Web Docs</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener">github.com — GitHub</a></li>
+        <li><a href="https://stackoverflow.com" target="_blank" rel="noopener">stackoverflow.com — Stack Overflow</a></li>
+        <li><a href="https://www.w3schools.com" target="_blank" rel="noopener">w3schools.com — W3Schools</a></li>
+        <li><a href="https://css-tricks.com" target="_blank" rel="noopener">css-tricks.com — CSS-Tricks</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── EXERCISES 3-5: Anchors ── -->
+  <section id="ex3">
+    <h2><span class="num">03–05</span>Якорная навигация</h2>
+
+    <!-- Ex 3: link top → bottom -->
+    <div class="long-page-demo" id="demo3">
+      <div class="lp-header">
+        <span style="font-size:.8rem; color:var(--muted); font-family:'Space Mono',monospace;">// Задание 3: ссылка вверху → переход вниз</span>
+        <a href="#demo3-bottom" class="anchor-link">Перейти вниз ↓</a>
+      </div>
+      <div class="lp-body">
+        <div class="lp-spacer">··· содержимое страницы ···</div>
+        <div class="lp-spacer">··· содержимое страницы ···</div>
+      </div>
+      <div class="lp-footer" id="demo3-bottom">
+        <span style="color:var(--accent2);font-size:.82rem;font-family:'Space Mono',monospace;">▲ Вы внизу страницы</span>
+      </div>
+    </div>
+
+    <div style="height:24px"></div>
+
+    <!-- Ex 4: link bottom → top -->
+    <div class="long-page-demo" id="demo4">
+      <div class="lp-header" id="demo4-top">
+        <span style="font-size:.8rem; color:var(--muted); font-family:'Space Mono',monospace;">// Задание 4: ссылка внизу → переход вверх</span>
+        <span style="color:var(--accent2);font-size:.82rem;font-family:'Space Mono',monospace;">▼ Начало</span>
+      </div>
+      <div class="lp-body">
+        <div class="lp-spacer">··· содержимое страницы ···</div>
+        <div class="lp-spacer">··· содержимое страницы ···</div>
+      </div>
+      <div class="lp-footer">
+        <a href="#demo4-top" class="anchor-link">↑ Вернуться наверх</a>
+      </div>
+    </div>
+
+    <div style="height:24px"></div>
+
+    <!-- Ex 5: both top↓ and bottom↑ -->
+    <div class="long-page-demo" id="demo5">
+      <div class="lp-header" id="demo5-top">
+        <span style="font-size:.8rem; color:var(--muted); font-family:'Space Mono',monospace;">// Задание 5: ссылка сверху вниз + снизу обратно наверх</span>
+        <a href="#demo5-bottom" class="anchor-link">Перейти вниз ↓</a>
+      </div>
+      <div class="lp-body">
+        <div class="lp-spacer">··· содержимое страницы ···</div>
+        <div class="lp-spacer">··· содержимое страницы ···</div>
+      </div>
+      <div class="lp-footer" id="demo5-bottom">
+        <a href="#demo5-top" class="anchor-link">↑ Вернуться наверх</a>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    &copy; 2024 Лабораторная работа 9 · Часть А — HTML
+  </footer>
+
+</body>
+</html>

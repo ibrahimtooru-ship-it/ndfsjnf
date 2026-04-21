@@ -1,0 +1,291 @@
+/* ══════════════════════════════════════════
+   LAB 9 — Part B · style.css
+   Лабораторное занятие 9: CSS стили
+══════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0e0e0f;
+  --surface: #18181b;
+  --border: #2a2a2e;
+  --accent: #f7c948;
+  --accent2: #ff6b6b;
+  --text: #e8e8e8;
+  --muted: #888;
+  --radius: 8px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  line-height: 1.6;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(14,14,15,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: .05em;
+}
+
+header nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: .85rem;
+  transition: color .2s;
+}
+header nav a:hover { color: var(--text); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  background:
+    radial-gradient(ellipse 60% 60% at 80% 30%, rgba(255,107,107,.09) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 20% 70%, rgba(247,201,72,.08) 0%, transparent 60%);
+}
+
+.label {
+  font-family: 'Space Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.hero-title span { color: var(--accent); }
+
+.hero-desc {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* ── SECTION ── */
+section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  color: var(--accent2);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title .num {
+  font-family: 'Space Mono', monospace;
+  color: var(--accent2);
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+/* ── CARD GRID (background-color) ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-3px); }
+
+.card code {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: .7rem;
+  margin-bottom: 10px;
+  opacity: .75;
+}
+.card p { font-size: .9rem; }
+
+/* ── BG IMAGE DEMOS ── */
+.bg-demos { display: flex; flex-direction: column; gap: 20px; }
+
+.bg-demo {
+  height: 160px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fixed background */
+.bg-fixed {
+  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=80');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* Repeat X — small tile pattern */
+.bg-repeat-x {
+  background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+  background-repeat: repeat-x;
+  background-color: #1a1a2e;
+}
+
+/* Repeat Y */
+.bg-repeat-y {
+  background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+  background-repeat: repeat-y;
+  background-position: left center;
+  background-color: #1a1a2e;
+}
+
+.bg-demo-label {
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  padding: 14px 20px;
+}
+.bg-demo-label code {
+  font-family: 'Space Mono', monospace;
+  font-size: .75rem;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 4px;
+}
+.bg-demo-label p { font-size: .82rem; color: var(--muted); }
+
+/* ── DEMO BLOCKS (text) ── */
+.demo-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 20px;
+}
+
+.demo-label {
+  font-family: 'Space Mono', monospace;
+  font-size: .72rem;
+  color: var(--accent2);
+  margin-bottom: 16px;
+  letter-spacing: .05em;
+}
+
+/* Задание 4 — text-decoration */
+.text-underline  { text-decoration: underline; margin-bottom: 10px; }
+.text-overline   { text-decoration: overline; color: #a0c4ff; margin-bottom: 10px; }
+.text-linethrough{ text-decoration: line-through; color: var(--muted); margin-bottom: 10px; }
+.text-bg-highlight{ margin-top: 4px; }
+.text-bg-highlight mark { background-color: #fff59d; color: #333; padding: 2px 6px; border-radius: 3px; }
+
+/* Задание 5 — direction */
+.text-ltr { direction: ltr; margin-bottom: 10px; }
+.text-rtl { direction: rtl; color: #a0c4ff; }
+
+/* Задание 6 — color */
+.color-gray   { color: #777777; margin-bottom: 8px; font-size: 1.1rem; }
+.color-blue   { color: #5f80a9; margin-bottom: 8px; font-size: 1.1rem; }
+.color-green  { color: #2d653e; font-weight: bold; margin-bottom: 8px; font-size: 1.1rem; }
+.color-navy   { color: #8888cc; font-size: 1.1rem; }
+
+/* text-indent & text-align */
+.text-indent-demo { text-indent: 30px; margin-bottom: 10px; color: var(--muted); }
+.text-left    { text-align: left;   margin-bottom: 8px; }
+.text-right   { text-align: right;  margin-bottom: 8px; color: var(--accent); font-size: 1rem; }
+.text-center  { text-align: center; color: var(--accent2); font-size: 1rem; }
+
+/* ── FONT SHOWCASE ── */
+.font-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.font-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  transition: border-color .2s, transform .2s;
+}
+.font-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+.font-demo {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.font-card code {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: .68rem;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.font-card p { font-size: .8rem; color: var(--muted); }
+
+.font-georgia  { font-family: Georgia, serif; }
+.font-courier  { font-family: 'Courier New', Courier, monospace; }
+.font-tahoma   { font-family: Tahoma, Geneva, sans-serif; }
+.font-playfair { font-family: 'Playfair Display', serif; font-style: italic; }
+
+/* Font sizes */
+.fs-percent { font-size: 140%; margin-bottom: 8px; color: var(--text); }
+.fs-px      { font-size: 20px;  margin-bottom: 8px; color: var(--accent); }
+.fs-em      { font-size: 1.6em; color: var(--accent2); }
+
+/* Font style */
+.fs-normal  { font-style: normal;  margin-bottom: 8px; }
+.fs-italic  { font-style: italic;  margin-bottom: 8px; color: #a0c4ff; }
+.fs-oblique { font-style: oblique; color: var(--accent); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 32px;
+  color: var(--muted);
+  font-size: .8rem;
+  font-family: 'Space Mono', monospace;
+}
